@@ -1,0 +1,53 @@
+[
+  {
+    "name": "yourls",
+    "image": "${image}",
+    "portMappings": [
+      {
+        "containerPort": 80,
+        "hostPort": 80
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "${logs}",
+        "awslogs-region": "us-east-1",
+        "awslogs-stream-prefix": "yourls_logs"
+      }
+    },
+    "memory": 200,
+    "cpu": 100,
+    "networkMode": "awsvpc",
+    "environment": [
+      {
+        "name": "YOURLS_DB_HOST",
+        "value": "${db_hostname}"
+      },
+      {
+        "name": "YOURLS_DB_USER",
+        "value": "${db_user}"
+      },
+      {
+        "name": "YOURLS_DB_PASS",
+        "value": "${db_password}"
+      },
+      {
+        "name": "YOURLS_DB_NAME",
+        "value": "${db_name}"
+      },
+      {
+        "name": "YOURLS_SITE",
+        "value": "${domain}"
+      },
+      {
+        "name": "YOURLS_USER",
+        "value": "${yourls_user}"
+      },
+      {
+        "name": "YOURLS_PASS",
+        "value": "${yourls_pass}"
+      }
+    ]
+  }
+]
